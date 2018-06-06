@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Adicionar Pessoa</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <form name="dadosPessoa" action="conexao.php" method="POST">
+
+            <table>
+                <tbody>
+
+                    <tr>
+                        <td>Nome</td>
+                        <td><input type="text" name="nome" value="" /></td>
+                    </tr>   
+                    <tr>
+                        <td>Nascimento</td>
+                        <td><input type="date" name="nascimento" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Telefone</td>
+                        <td><input type="text" name="telefone" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Endereço</td>
+                        <td><input type="text" name="endereco" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><input type="hidden" name="acao" value="Inserir" /></td>
+                        <td><input type="submit" name="enviar" value="Enviar" /></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </form>
+    </body>
+</html>
