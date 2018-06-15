@@ -8,6 +8,10 @@
         if ($_POST["acao"] == "Alterar"){
             alterarPessoa();
         }
+        if ($_POST["acao"] == "Excluir"){
+            excluirPessoa();
+        }
+        
     }
     
     //funcao que passa o local e as credenciais para logar no banco
@@ -65,7 +69,7 @@
         
         $banco = abrirBanco();
         //a consulta sql
-        $sql = "SELECT * FROM pessoa WHERE id =".$id;
+        $sql = "SELECT * FROM pessoa WHERE id ='$id'";
         $resultado = $banco->query($sql);
         $banco->close();
         $pessoa = mysqli_fetch_assoc($resultado);
@@ -87,6 +91,21 @@
 
         //update no usuario especifico no qual já deve existir a informação
         $sql = "UPDATE pessoa SET nome='$nome',nascimento='$nascimento',endereco='$endereco',telefone='$telefone' WHERE id='$id'";
+        $banco->query($sql);
+        $banco->close();
+        voltarIndex();
+
+    }
+
+    function excluirPessoa(){
+        
+        $banco = abrirBanco();
+
+        //variável id que vai ser usada na consulta
+        $id = $_POST["id"]; 
+
+        //delete do usuário específico 
+        $sql = "DELETE FROM pessoa WHERE id='$id'";
         $banco->query($sql);
         $banco->close();
         voltarIndex();

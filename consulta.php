@@ -27,7 +27,13 @@
                         <input type="submit" name="Editar" value="Editar" />
                     </form>
                 </td>
-                <td>Excluir</td>
+                <td>
+                    <form name="excluir" action="conexao.php" method="POST">
+                        <input type="hidden" name="id" value=<?=$pessoa["id"]?> />
+                        <input type="submit" name="acao" value="Excluir" />
+                    </form>    
+                    
+                </td>
             </tr>   
 
         <?php } ?>
