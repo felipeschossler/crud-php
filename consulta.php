@@ -21,7 +21,12 @@
                 <td><?=$pessoa["nascimento"]?></td>
                 <td><?=$pessoa["telefone"]?></td>
                 <td><?=$pessoa["endereco"]?></td>
-                <td>Editar</td>
+                <td>
+                    <form nome="alterar" action="alterar.php" method="POST">
+                        <input type="hidden" name="id" value=<?=$pessoa["id"]?> />
+                        <input type="submit" name="Editar" value="Editar" />
+                    </form>
+                </td>
                 <td>Excluir</td>
             </tr>   
 

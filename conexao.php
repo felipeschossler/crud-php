@@ -1,9 +1,12 @@
 <?php
     
-    //VERIFICANDO SE A ACAO FOR INSERIR E SE VERDADEIRO CHAMA inserirPessoa()
-    if(isset($_POST["enviar"])){
-        if ($_POST["enviar"] == "Enviar"){
+    //VERIFICANDO VALOR DA ACAO PARA REDIRECIONAR PARA A DETERMINADA ACAO
+    if(isset($_POST["acao"])){
+        if ($_POST["acao"] == "Inserir"){
             inserirPessoa();
+        }
+        if ($_POST["acao"] == "Alterar"){
+            alterarPessoa();
         }
     }
     
@@ -45,8 +48,32 @@
             $grupo [] = $row;
         }
         
+        $banco->close();
         return $grupo;
 
+    }
+
+    function selectIdPessoa($id){
+        $banco = abrirBanco();
+        $sql = "SELECT * FROM pessoa WHERE id =".$id;
+        $resultado = $banco->query($sql);
+        $banco->close();
+        $pessoa = mysqli_fetch_assoc($resultado);
+        return $pessoa;
+    }
+    
+    function alterarPessoa(){
+        $id = $_POST["id"];
+        $nome = $_POST["nome"];
+        $nascimento = $_POST["nascimento"];
+        $endereco = $_POST["endereco"];
+        $telefone = $_POST["telefone"];
+
+        $banco = abrirBanco();
+        $sql = "UPDATE pessoa SET nome='$nome',nascimento='$nascimento',endereco='$endereco',telefone='$telefone' WHERE id='$id'";
+        $banco->query($sql);
+        $banco->close();
+        voltarIndex();
     }
 
 ?>
