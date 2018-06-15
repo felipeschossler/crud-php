@@ -30,7 +30,7 @@ $pessoa = selectIdPessoa($_POST["id"]);
                     <input type="hidden" name="acao" value="Alterar" />
                     <input type="hidden" name="id" value="<?=$pessoa["id"]?>" />
                 </td>
-                <td><input type="submit" name="enviar" value="Enviar" /></td>
+                <td><input type="submit" name="enviar" value="Alterar" /></td>
             </tr>
         </tbody>
     </table>
